@@ -68,7 +68,7 @@ const images = [
 ];
 
 //  Отримую посилання на контейнер галереї
-const galleryContainer = document.querySelector('ul.gallery');
+const galleryContainer = document.querySelector('.gallery');
 
 // Створюю розмітку для кожного елемента галереї за допомогою масиву об'єктів images
 const galleryItemsMarkup = images
@@ -90,24 +90,10 @@ const galleryItemsMarkup = images
 // Додаю розмітку елементів галереї всередину контейнера
 galleryContainer.insertAdjacentHTML('beforeend', galleryItemsMarkup);
 
-// Забороняю стандартну дію по кліку на посиланнях у галереї (завантаження зображення)
-galleryContainer.addEventListener('click', event => {
-  event.preventDefault();
+// Відкриття модального вікна збільшеного зображення
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
 });
 
-// Прослуховування події кліку на контейнері галереї
-galleryContainer.addEventListener('click', event => {
-  // Перевірка, чи клікнуто на зображенні
-  const imageElement = event.target.closest('img');
-  if (!imageElement) return;
-
-  // Отримання URL та альтернативного тексту зображення
-  const imageUrl = imageElement.dataset.source;
-  const imageAlt = imageElement.alt;
-
-  // Відкриття модального вікна збільшеного зображення
-  const lightbox = basicLightbox.create(`
-    <img src="${imageUrl}" alt="${imageAlt}">
-  `);
-  lightbox.show();
-});
+lightbox.show();
