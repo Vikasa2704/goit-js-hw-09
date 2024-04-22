@@ -1,6 +1,7 @@
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  max-width: 1140px;
   height: 696px;
   padding: 24px 156px;
   flex-direction: column;
@@ -19,4 +20,11 @@
   width: 360px;
   height: 200px;
   flex-shrink: 0;
+}
+modal {
+  width: 1440px;
+  height: 696px;
+  flex-shrink: 0;
+  background: rgba(46, 47, 66, 0.8);
+  background-repeat: no-repeat;
 }
